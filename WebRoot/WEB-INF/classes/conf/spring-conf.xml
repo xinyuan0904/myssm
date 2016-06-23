@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>spring配置</description>
+	<!-- 数据库 -->
+    <import resource="classpath*:conf/spring-source.xml"/>
+    <!-- mybatis -->
+	<import resource="classpath*:conf/spring-mybatis.xml"/>
+	
+</beans>
