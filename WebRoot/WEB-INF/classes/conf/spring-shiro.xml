@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Shiro安全配置</description>
+	<!-- 扫描service注入realm -->
+	<context:component-scan base-package="com.myssm.yuan.service" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	<!--securityManager是shiro的核心，初始化时协调各个模块运行-->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	   <!--单个realm使用realm,如果有多个realm，使用realms属性代替--> 
+	   <property name="realm" ref="userRealm" />
+	   <property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+    <!--realm配置，realm是shiro的桥梁，它主要是用来判断subject是否可以登录及权限等-->
+    <bean id="userRealm" class="com.myssm.yuan.shiro.UserRealm" />
+    <!-- <property name="userService" ref="userService"/></bean> 不扫描可采用此方法注入-->
+    <!--shiro过滤器配置，bean的id值须与web中的filter-name的值相同-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+	<property name="securityManager" ref="securityManager" />
+         <!-- 没有权限或者失败后跳转的页面 -->
+	 <property name="loginUrl" value="/login.jsp" /> 
+	 <property name="successUrl" value="/WEB-INF/page/index.jsp" />
+	 <property name="unauthorizedUrl" value="/login/unauthorized" />
+		<property name="filterChainDefinitions">
+			<value>
+				/login/logout=logout
+				/login/**=anon
+				/**=authc,rest
+			</value>
+		</property>
+	</bean>
+	<!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:conf/ehcache-shiro.xml"/>
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>

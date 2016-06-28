@@ -3,7 +3,7 @@
  * @Title: IUserDao.java
  * @Package com.myssm.yuan.dao
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ ÏÂÎç3:46:05
+ * @date 2016ï¿½ï¿½6ï¿½ï¿½23ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:46:05
  * @Copyright: 2016
  * @version V1.0  
 */
@@ -19,11 +19,12 @@ import com.myssm.yuan.pojo.User;
 /**
  * @ClassName IUserDao
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ
+ * @date 2016ï¿½ï¿½6ï¿½ï¿½23ï¿½ï¿½
  * @version 1.0
  */
 @Repository
 public interface IUserDao {
 	
 	List<User> getUserList();
+	User getUserByAccount(String account);
 }

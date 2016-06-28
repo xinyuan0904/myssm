@@ -3,7 +3,7 @@
  * @Title: UserServiceImpl.java
  * @Package com.myssm.yuan.service.impl
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ ÏÂÎç3:46:48
+ * @date 2016ï¿½ï¿½6ï¿½ï¿½23ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:46:48
  * @Copyright: 2016
  * @version V1.0  
 */
@@ -22,7 +22,7 @@ import com.myssm.yuan.service.IUserService;
 /**
  * @ClassName UserServiceImpl
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ
+ * @date 2016ï¿½ï¿½6ï¿½ï¿½23ï¿½ï¿½
  * @version 1.0
  */
 @Service
@@ -39,6 +39,18 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public List<User> getUserList() {
 		return this.userDao.getUserList();
+	}
+	/** (non Javadoc) 
+	 * <p>Title: getUserByAccount</p> 
+	 * <p>Description: </p> 
+	 * @param account
+	 * @return 
+	 * @see com.myssm.yuan.service.IUserService#getUserByAccount(java.lang.String) 
+	*/
+	
+	@Override
+	public User getUserByAccount(String account) {
+		return this.userDao.getUserByAccount(account);
 	}
 
 }

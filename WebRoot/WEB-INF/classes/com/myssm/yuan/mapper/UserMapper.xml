@@ -4,4 +4,7 @@
    <select id="getUserList" resultType="com.myssm.yuan.pojo.User">
    		select * from ob_user
    </select>
+   <select id="getUserByAccount" parameterType="String" resultType="com.myssm.yuan.pojo.User">
+ 		select * from ob_user where account=#{account}
+ 	</select>
 </mapper>

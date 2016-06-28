@@ -9,5 +9,6 @@
     <import resource="classpath*:conf/spring-source.xml"/>
     <!-- mybatis -->
 	<import resource="classpath*:conf/spring-mybatis.xml"/>
-	
+	<!-- shiro-->
+	<import resource="classpath*:conf/spring-shiro.xml"/> 
 </beans>

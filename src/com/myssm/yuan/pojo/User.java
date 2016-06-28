@@ -3,7 +3,7 @@
  * @Title: User.java
  * @Package com.myssm.yuan.pojo
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ ÏÂÎç3:46:22
+ * @date 2016ï¿½ï¿½6ï¿½ï¿½23ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½3:46:22
  * @Copyright: 2016
  * @version V1.0  
 */
@@ -13,13 +13,19 @@ package com.myssm.yuan.pojo;
 /**
  * @ClassName User
  * @author yuan
- * @date 2016Äê6ÔÂ23ÈÕ
  * @version 1.0
  */
 
 public class User {
 	private String userName;
 	private String account;
+	private String password;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getUserName() {
 		return userName;
 	}
